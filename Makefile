@@ -1,7 +1,7 @@
 NAME = so_long
 
 CFLAGS = -Wall -Wextra -Werror
-SRCS = test.c
+SRCS = test.c check_map.c floodfill.c path_check.c
 
 GNL_PATH = ./gnl
 GNL = $(GNL_PATH)/get_next_line.a

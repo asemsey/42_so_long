@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 14:38:39 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/08 15:37:42 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/09 15:35:39 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ char	**ft_split(char const *s, char c)
 	if (j >= 0)
 	{
 		free_all(strs);
-		return (0);
+		return (NULL);
 	}
 	return (strs);
 }
