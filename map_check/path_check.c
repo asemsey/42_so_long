@@ -6,23 +6,21 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:14:35 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/11 15:15:53 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 11:23:59 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 char	**copy_map(char **map)
 {
 	t_point	size;
-	int		len;
 	char	**new;
 
 	size = get_size(map);
-	new = (char **)malloc(sizeof(char *) * (size.y + 1));
+	new = (char **)malloc(sizeof(char *) * (size.y + 2));
 	if (!new)
 		return (NULL);
-	len = 0;
 	size.y = 0;
 	while (map[size.y])
 	{

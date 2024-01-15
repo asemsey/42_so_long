@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:35:06 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/11 15:19:01 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 11:21:23 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ typedef struct s_point
 
 void	print_map(char **map);
 int		valid_map(char **map);
+int		valid_path(char **map);
 t_point	get_size(char **map);
 t_point	get_begin(char **map, char start);
 char	**copy_map(char **map);
-int		flood_fill(char **tab, t_point size, t_point begin);
+// int		flood_fill(char **tab, t_point size, t_point begin);
 
 #endif

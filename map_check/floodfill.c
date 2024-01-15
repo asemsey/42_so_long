@@ -6,11 +6,11 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 18:28:43 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/11 15:38:56 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 11:24:06 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 char	**fill(char **tab, t_point spot, t_point size, char dir)
 {

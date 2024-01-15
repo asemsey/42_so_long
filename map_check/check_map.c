@@ -6,11 +6,11 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:28:38 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/11 15:17:00 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 11:24:10 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	rectangle(char **map)
 {
@@ -97,6 +97,7 @@ int	valid_map(char **map)
 	if (!rectangle(map) || !characters(map) || !wall(map))
 		return (0);
 	write(1, "ok\n", 3);
-	return (flood_fill(map, get_size(map), get_begin(map, 'P')));
+	if (!valid_path(map))
+		return (0);
 	return (1);
 }

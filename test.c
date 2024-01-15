@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:39:37 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/09 18:03:35 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 10:52:34 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,15 @@ char	**read_map(const char *filename)
 
 void	print_map(char **map)
 {
-	int	i;
+	int		i;
+	char	c;
 
 	i = 0;
 	while (map[i])
 	{
+		c = i + '0';
+		write(1, &c, 1);
+		write(1, "   ", 3);
 		ft_putstr_fd(map[i], 1);
 		write(1, "\n", 1);
 		i++;
@@ -123,9 +127,9 @@ int	main(int argc, char const *argv[])
 	if (!valid_map(map))
 	{
 		free_all(map);
-		return (1);
+		return (EXIT_FAILURE);
 	}
 	print_map(map);
 	free_all(map);
-	return (0);
+	return (EXIT_SUCCESS);
 }
