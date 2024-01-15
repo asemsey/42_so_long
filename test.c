@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:39:37 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/15 10:52:34 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 14:55:28 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int	count_lines(const char *filename)
 		if (!line)
 			break;
 		i++;
-		// if ((ft_strlen(line) < 4 && ft_strchr(line, '\n')) || (ft_strlen(line) < 3 && !ft_strchr(line, '\n')))
-		// {
-		// 	free(line);
-		// 	i = -1;
-		// 	break;
-		// }
 		free(line);
 		line = NULL;
 	}
@@ -122,13 +116,17 @@ int	main(int argc, char const *argv[])
 		return (EXIT_FAILURE);
 	map = read_map(argv[1]);
 	if (!map)
+	{
+		write(2, "couldn't create map\n", 20);
 		return (EXIT_FAILURE);
+	}
 	remove_n(map);
 	if (!valid_map(map))
 	{
 		free_all(map);
 		return (EXIT_FAILURE);
 	}
+	write(1, "map valid:\n", 11);
 	print_map(map);
 	free_all(map);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:28:38 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/15 11:24:10 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 14:55:55 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	rectangle(char **map)
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != ft_strlen(map[0]))
+		{
+			write(2, "map is not rectangular\n", 23);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -54,7 +57,10 @@ int	characters(char **map)
 	if (count_char(map, 'P') != 1
 		|| count_char(map, 'E') != 1
 		|| count_char(map, 'C') < 1)
+	{
+		write(2, "incorrect characters in map\n", 28);
 		return (0);
+	}
 	return (1);
 }
 
@@ -80,24 +86,18 @@ int	wall(char **map)
 	while (map[size[0]])
 		size[0]++;
 	if (!only_c(map[0], '1') || !only_c(map[size[0] - 1], '1'))
+	{
+		write(2, "map must be surrounded by walls\n", 32);
 		return (0);
+	}
 	while (map[i])
 	{
 		if (map[i][0] != '1' || map[i][size[1] - 1] != '1')
+		{
+			write(2, "map must be surrounded by walls\n", 32);
 			return (0);
+		}
 		i++;
 	}
-	return (1);
-}
-
-int	valid_map(char **map)
-{
-	if (!map || !*map)
-		return (0);
-	if (!rectangle(map) || !characters(map) || !wall(map))
-		return (0);
-	write(1, "ok\n", 3);
-	if (!valid_path(map))
-		return (0);
 	return (1);
 }

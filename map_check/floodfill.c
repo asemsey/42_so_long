@@ -5,44 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 18:28:43 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/15 11:24:06 by asemsey          ###   ########.fr       */
+/*   Created: 2024/01/15 11:13:03 by asemsey           #+#    #+#             */
+/*   Updated: 2024/01/15 14:56:03 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-char	**fill(char **tab, t_point spot, t_point size, char dir)
+char	**floodfill(char **map, int y, int x, char dir)
 {
-	if (!tab[spot.y] || !tab[spot.y][spot.x] || tab[spot.y][spot.x] == '1' || tab[spot.y][spot.x] == 'F')
-		return (tab);
-	ft_printf("%d %d dir:%c char:%c\n", spot.y, spot.x, dir, tab[spot.y][spot.x]);
-	tab[spot.y][spot.x] = 'F';
-	if (spot.y > 0 && spot.y < size.y && spot.x < size.x && dir != 'd')
-	{
-		spot.y--;
-		ft_printf("up\n");
-		tab = fill(tab, spot, size, 'u');//up
-	}
-	if (spot.y < size.y - 1 && spot.x < size.x && dir != 'u')
-	{
-		spot.y++;
-		ft_printf("down\n");
-		tab = fill(tab, spot, size, 'd');//down
-	}
-	if (spot.x > 0 && spot.y < size.y && spot.x < size.x && dir != 'r')
-	{
-		spot.x--;
-		ft_printf("left\n");
-		tab = fill(tab, spot, size, 'l');//left
-	}
-	if (spot.y < size.y && spot.x < size.x - 1 && dir != 'l')
-	{
-		spot.x++;
-		ft_printf("right\n");
-		tab = fill(tab, spot, size, 'r');//right
-	}
-	return (tab);
+	if (y < 0 || x < 0 || !map[y] || !map[y][x] || map[y][x] == '1' || map[y][x] == 'F')
+		return (map);
+	map[y][x] = 'F';
+	if (dir != 'd')
+		map = floodfill(map, y - 1, x, 'u');//up
+	if (dir != 'u')
+		map = floodfill(map, y + 1, x, 'd');//down
+	if (dir != 'r')
+		map = floodfill(map, y, x - 1, 'l');//left
+	if (dir != 'l')
+		map = floodfill(map, y, x + 1, 'r');//right
+	return (map);
 }
 
 int	is_connected(char **map, t_point begin)
@@ -58,22 +41,28 @@ int	is_connected(char **map, t_point begin)
 	return (0);
 }
 
-int	flood_fill(char **tab, t_point size, t_point begin)
+int	valid_path(char **map)
 {
 	char	**copy;
+	t_point	start;
+	t_point	size;
+	t_point	exit;
 
-	print_map(tab);
-	copy = copy_map(tab);
+	copy = copy_map(map);
 	if (!copy)
 		return (0);
-	print_map(copy);
-	copy = fill(copy, begin, size, ' ');
-	print_map(copy);
-	if (is_connected(copy, begin))
+	start = get_begin(copy, 'P');
+	size = get_size(copy);
+	exit = get_begin(copy, 'E');
+	copy = floodfill(copy, start.y, start.x, ' ');
+	// write(1, "map floodfilled:\n", 17);
+	// print_map(copy);
+	if (is_connected(copy, exit))
 	{
 		free_all(copy);
 		return (1);
 	}
+	write(2, "no path found\n", 14);
 	free_all(copy);
 	return (0);
 }
