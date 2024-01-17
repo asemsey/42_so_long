@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:28:38 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/15 14:55:55 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/15 15:01:07 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	rectangle(char **map)
 	{
 		if (ft_strlen(map[i]) != ft_strlen(map[0]))
 		{
-			write(2, "map is not rectangular\n", 23);
+			write(2, "Error\nmap is not rectangular\n", 29);
 			return (0);
 		}
 		i++;
@@ -58,7 +58,7 @@ int	characters(char **map)
 		|| count_char(map, 'E') != 1
 		|| count_char(map, 'C') < 1)
 	{
-		write(2, "incorrect characters in map\n", 28);
+		write(2, "Error\nincorrect characters in map\n", 34);
 		return (0);
 	}
 	return (1);
@@ -87,14 +87,14 @@ int	wall(char **map)
 		size[0]++;
 	if (!only_c(map[0], '1') || !only_c(map[size[0] - 1], '1'))
 	{
-		write(2, "map must be surrounded by walls\n", 32);
+		write(2, "Error\nmap must be surrounded by walls\n", 38);
 		return (0);
 	}
 	while (map[i])
 	{
 		if (map[i][0] != '1' || map[i][size[1] - 1] != '1')
 		{
-			write(2, "map must be surrounded by walls\n", 32);
+			write(2, "Error\nmap must be surrounded by walls\n", 38);
 			return (0);
 		}
 		i++;

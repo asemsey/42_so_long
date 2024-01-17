@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:39:37 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/15 14:55:28 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/17 13:51:55 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ int	main(int argc, char const *argv[])
 {
 	char	**map;
 
-	// atexit(leak);
+	atexit(leak);
 	if (argc != 2)
 		return (EXIT_FAILURE);
 	map = read_map(argv[1]);
 	if (!map)
 	{
-		write(2, "couldn't create map\n", 20);
+		write(2, "Error\ncouldn't create map\n", 26);
 		return (EXIT_FAILURE);
 	}
 	remove_n(map);
@@ -128,6 +128,7 @@ int	main(int argc, char const *argv[])
 	}
 	write(1, "map valid:\n", 11);
 	print_map(map);
+	init_game(map);
 	free_all(map);
 	return (EXIT_SUCCESS);
 }

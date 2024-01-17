@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:13:03 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/15 14:56:03 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/17 13:48:54 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,41 +28,26 @@ char	**floodfill(char **map, int y, int x, char dir)
 	return (map);
 }
 
-int	is_connected(char **map, t_point begin)
-{
-	if (map[begin.y] && map[begin.y][begin.x + 1] && map[begin.y][begin.x + 1] == 'F')
-		return (1);
-	if (map[begin.y] && map[begin.y][begin.x - 1] && map[begin.y][begin.x - 1] == 'F')
-		return (1);
-	if (map[begin.y + 1] && map[begin.y + 1][begin.x] && map[begin.y + 1][begin.x] == 'F')
-		return (1);
-	if (map[begin.y - 1] && map[begin.y - 1][begin.x] && map[begin.y - 1][begin.x] == 'F')
-		return (1);
-	return (0);
-}
-
 int	valid_path(char **map)
 {
 	char	**copy;
 	t_point	start;
 	t_point	size;
-	t_point	exit;
 
 	copy = copy_map(map);
 	if (!copy)
 		return (0);
 	start = get_begin(copy, 'P');
 	size = get_size(copy);
-	exit = get_begin(copy, 'E');
 	copy = floodfill(copy, start.y, start.x, ' ');
 	// write(1, "map floodfilled:\n", 17);
 	// print_map(copy);
-	if (is_connected(copy, exit))
+	if (!count_char(copy, 'E') && !count_char(copy, 'C'))
 	{
 		free_all(copy);
 		return (1);
 	}
-	write(2, "no path found\n", 14);
+	write(2, "Error\nno path found\n", 20);
 	free_all(copy);
 	return (0);
 }
