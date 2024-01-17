@@ -6,11 +6,11 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:39:37 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/17 13:51:55 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/17 19:41:20 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	count_lines(const char *filename)
 {

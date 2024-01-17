@@ -1,7 +1,8 @@
 NAME = so_long
 
 CFLAGS = -Wall -Wextra -Werror
-SRCS = test.c game.c map_check/check_map.c map_check/floodfill.c map_check/path_check.c
+SRCS = game/start.c game/game.c game/images.c game/walk.c\
+		map_check/check_map.c map_check/floodfill.c map_check/path_check.c
 
 MLX_PATH = ./MLX42/build
 MLX = $(MLX_PATH)/libmlx42.a -ldl -lglfw -pthread -lm

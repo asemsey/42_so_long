@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:35:06 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/17 15:20:17 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/17 19:40:47 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 typedef struct s_objects
 {
+	char			**map;
 	mlx_t			*mlx;
 	mlx_texture_t	*floor;
 	mlx_texture_t	*exit;
@@ -54,7 +55,14 @@ t_point	get_size(char **map);
 t_point	get_begin(char **map, char start);
 char	**copy_map(char **map);
 
-// rest
+// game
 void	init_game(char **map);
+void	load_pngs(t_objects *objects);
+void	free_pngs(t_objects *objects);
+void	load_map(t_objects *objects);
+void	ft_go_up(t_objects *objects);
+void	ft_go_left(t_objects *objects);
+void	ft_go_down(t_objects *objects);
+void	ft_go_right(t_objects *objects);
 
 #endif
