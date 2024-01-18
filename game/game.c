@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:07:58 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 14:08:07 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 16:32:53 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	get_coinmap(t_objects *objects)
 		}
 		i.y++;
 	}
+	objects->coinmap[i.y] = NULL;
 }
 
 void	object_to_window(t_objects *objects, int y, int x)
@@ -111,7 +112,6 @@ void	init_game(char **map)
 	load_map(objects);
 	mlx_key_hook(objects->mlx, key_hook, objects);
 	mlx_loop(objects->mlx);
-	free(objects);
 	free_pngs(objects);
 }
 

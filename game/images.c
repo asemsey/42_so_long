@@ -6,11 +6,28 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:14:36 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 13:20:51 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 16:33:02 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	free_all_int(int32_t **ints, t_point size)
+{
+	int	i;
+	char c;
+
+	i = 0;
+	while (i < size.y)
+	{
+		c = i + '0';
+		write(1, &c, 1);
+		free(ints[i]);
+		i++;
+	}
+	write(1, "ok", 2);
+	free(ints);
+}
 
 void	to_image(t_objects *objects)
 {
@@ -87,6 +104,10 @@ void	free_pngs(t_objects *objects)
 	mlx_delete_texture(objects->lplayer);
 	mlx_delete_texture(objects->dplayer);
 	mlx_delete_texture(objects->rplayer);
+	free_all_int(objects->coinmap, get_size(objects->map));
+	free_all(objects->map);
+	mlx_terminate(objects->mlx);
+	free(objects);
 }
 
 void	player_to_window(t_objects *objects, t_point p)

@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:39:37 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 13:28:34 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 16:33:11 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,6 @@ int	main(int argc, char const *argv[])
 		free_all(map);
 		return (EXIT_FAILURE);
 	}
-	write(1, "map valid:\n", 11);
-	print_map(map);
 	init_game(map);
-	free_all(map);
 	return (EXIT_SUCCESS);
 }
