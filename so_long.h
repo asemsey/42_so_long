@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:35:06 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 13:06:26 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:53:16 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_point
 typedef struct s_objects
 {
 	char			**map;
+	int32_t			**coinmap;
 	int				steps;
 	int				coins_left;
 	t_point			p;
@@ -69,6 +70,7 @@ void	init_game(char **map);
 void	load_pngs(t_objects *objects);
 void	free_pngs(t_objects *objects);
 void	load_map(t_objects *objects);
+void	player_to_window(t_objects *objects, t_point p);
 void	set_p(t_objects *objects);
 void	set_visible(t_objects *objects, char dir);
 void	ft_walk(t_objects *objects, int y, int x, char dir);

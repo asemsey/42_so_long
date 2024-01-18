@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:39:37 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/17 19:41:20 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:28:34 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	count_lines(const char *filename)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		i++;
 		free(line);
 		line = NULL;
@@ -102,7 +102,7 @@ void	remove_n(char **map)
 	}
 }
 
-void	leak()
+void	leak(void)
 {
 	system("leaks so_long");
 }

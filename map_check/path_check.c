@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:14:35 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/15 14:45:09 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:52:03 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,8 @@ int	valid_map(char **map)
 {
 	if (!map || !*map)
 		return (0);
-	// write(1, "checking if map is valid...\n", 29);
 	if (!rectangle(map) || !characters(map) || !wall(map))
 		return (0);
-	// write(1, "checking for path...\n", 22);
 	if (!valid_path(map))
 		return (0);
 	return (1);

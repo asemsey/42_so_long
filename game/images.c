@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:14:36 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 12:56:54 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:20:51 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,33 +97,4 @@ void	player_to_window(t_objects *objects, t_point p)
 	mlx_image_to_window(objects->mlx, objects->rplayer_i, p.x * 64, p.y * 64);
 	set_p(objects);
 	set_visible(objects, 'd');
-}
-
-void	load_map(t_objects *objects)
-{
-	t_point	p;
-	t_point	player;
-
-	p.y = 0;
-	while (objects->map[p.y])
-	{
-		p.x = 0;
-		while (objects->map[p.y][p.x])
-		{
-			if (objects->map[p.y][p.x] == '1')
-				mlx_image_to_window(objects->mlx, objects->wall_i, p.x * 64, p.y * 64);
-			if (objects->map[p.y][p.x] == '0' || objects->map[p.y][p.x] == 'P' 
-				|| objects->map[p.y][p.x] == 'C')
-				mlx_image_to_window(objects->mlx, objects->floor_i, p.x * 64, p.y * 64);
-			if (objects->map[p.y][p.x] == 'C')
-				mlx_image_to_window(objects->mlx, objects->coin_i, p.x * 64, p.y * 64);
-			if (objects->map[p.y][p.x] == 'E')
-				mlx_image_to_window(objects->mlx, objects->exit_i, p.x * 64, p.y * 64);
-			if (objects->map[p.y][p.x] == 'P')
-				player = p;
-			p.x++;
-		}
-		p.y++;
-	}
-	player_to_window(objects, player);
 }

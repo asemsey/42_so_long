@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:39:17 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 13:08:16 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:08:15 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,18 @@ void	set_coordinates(t_objects *objects, int y, int x)
 	set_p(objects);
 }
 
+void	coin_check(t_objects *objects, int y, int x)
+{
+	int32_t	i;
+
+	i = objects->coinmap[y][x];
+	if (i > -1 && objects->coin_i->instances[i].enabled)
+	{
+		objects->coins_left--;
+		objects->coin_i->instances[i].enabled = false;
+	}
+}
+
 // left: y, x - 1
 // right: y, x + 1
 // up: y - 1, x
@@ -63,22 +75,14 @@ void	ft_walk(t_objects *objects, int y, int x, char dir)
 	i = 0;
 	if (objects->map[y][x] == '1')
 		return ;
-	if (objects->exit_i->instances[0].x == x * 64 && objects->exit_i->instances[0].y == y * 64)
+	if (objects->exit_i->instances[0].x == x * 64
+		&& objects->exit_i->instances[0].y == y * 64)
 	{
 		if (objects->coins_left == 0)
 			exit(0);
 		return ;
 	}
-	while (objects->coin_i->instances[i].x > 0)
-	{
-		if (objects->coin_i->instances[i].x == x * 64 && objects->coin_i->instances[i].y == y * 64
-			&& objects->coin_i->instances[i].enabled)
-		{
-			objects->coins_left--;
-			objects->coin_i->instances[i].enabled = false;
-		}
-		i++;
-	}
+	coin_check(objects, y, x);
 	objects->steps++;
 	set_coordinates(objects, y * 64, x * 64);
 	set_visible(objects, dir);
