@@ -6,92 +6,81 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:39:17 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/17 19:40:54 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:08:16 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_go_up(t_objects *objects)
+void	set_visible(t_objects *objects, char dir)
 {
-	int	i;
-
-	i = 0;
-	if (objects->map[objects->player_i->instances[0].y / 64 - 1]
-		[objects->player_i->instances[0].x / 64] == '1')
-		return ;
-	if (objects->exit_i->instances[0].x == objects->player_i->instances[0].x
-			&& objects->exit_i->instances[0].y == objects->player_i->instances[0].y - 64)
-			exit(1);
-	while (objects->coin_i->instances[i].x > 0)
-	{
-		if (objects->coin_i->instances[i].x == objects->player_i->instances[0].x
-			&& objects->coin_i->instances[i].y == objects->player_i->instances[0].y - 64)
-				objects->coin_i->instances[i].enabled = false;
-		i++;
-	}
-	objects->player_i->instances[0].y -= 64;
+	if (dir != 'd')
+		objects->dplayer_i->instances[0].enabled = false;
+	if (dir == 'd')
+		objects->dplayer_i->instances[0].enabled = true;
+	if (dir != 'l')
+		objects->lplayer_i->instances[0].enabled = false;
+	if (dir == 'l')
+		objects->lplayer_i->instances[0].enabled = true;
+	if (dir != 'u')
+		objects->uplayer_i->instances[0].enabled = false;
+	if (dir == 'u')
+		objects->uplayer_i->instances[0].enabled = true;
+	if (dir != 'r')
+		objects->rplayer_i->instances[0].enabled = false;
+	if (dir == 'r')
+		objects->rplayer_i->instances[0].enabled = true;
 }
 
-void	ft_go_left(t_objects *objects)
+void	set_p(t_objects *objects)
 {
-	int	i;
-
-	i = 0;
-	if (objects->map[objects->player_i->instances[0].y / 64]
-		[objects->player_i->instances[0].x / 64 - 1] == '1')
-		return ;
-	if (objects->exit_i->instances[0].x == objects->player_i->instances[0].x - 64
-			&& objects->exit_i->instances[0].y == objects->player_i->instances[0].y)
-			exit(1);
-	while (objects->coin_i->instances[i].x > 0)
-	{
-		if (objects->coin_i->instances[i].x == objects->player_i->instances[0].x - 64
-			&& objects->coin_i->instances[i].y == objects->player_i->instances[0].y)
-				objects->coin_i->instances[i].enabled = false;
-		i++;
-	}
-	objects->player_i->instances[0].x -= 64;
+	objects->p.y = objects->dplayer_i->instances[0].y / 64;
+	objects->p.x = objects->dplayer_i->instances[0].x / 64;
 }
 
-void	ft_go_down(t_objects *objects)
+void	set_coordinates(t_objects *objects, int y, int x)
 {
-	int	i;
-
-	i = 0;
-	if (objects->map[objects->player_i->instances[0].y / 64 + 1]
-		[objects->player_i->instances[0].x / 64] == '1')
-		return ;
-	if (objects->exit_i->instances[0].x == objects->player_i->instances[0].x
-			&& objects->exit_i->instances[0].y == objects->player_i->instances[0].y + 64)
-			exit(1);
-	while (objects->coin_i->instances[i].x > 0)
-	{
-		if (objects->coin_i->instances[i].x == objects->player_i->instances[0].x
-			&& objects->coin_i->instances[i].y == objects->player_i->instances[0].y + 64)
-				objects->coin_i->instances[i].enabled = false;
-		i++;
-	}
-	objects->player_i->instances[0].y += 64;
+	objects->dplayer_i->instances[0].y = y;
+	objects->dplayer_i->instances[0].x = x;
+	objects->uplayer_i->instances[0].y = y;
+	objects->uplayer_i->instances[0].x = x;
+	objects->lplayer_i->instances[0].y = y;
+	objects->lplayer_i->instances[0].x = x;
+	objects->rplayer_i->instances[0].y = y;
+	objects->rplayer_i->instances[0].x = x;
+	set_p(objects);
 }
 
-void	ft_go_right(t_objects *objects)
+// left: y, x - 1
+// right: y, x + 1
+// up: y - 1, x
+// down: y + 1, x
+// y x are the coordinates in the map!!!
+void	ft_walk(t_objects *objects, int y, int x, char dir)
 {
 	int	i;
 
 	i = 0;
-	if (objects->map[objects->player_i->instances[0].y / 64]
-		[objects->player_i->instances[0].x / 64 + 1] == '1')
+	if (objects->map[y][x] == '1')
 		return ;
-	if (objects->exit_i->instances[0].x == objects->player_i->instances[0].x + 64
-			&& objects->exit_i->instances[0].y == objects->player_i->instances[0].y)
-			exit(1);
+	if (objects->exit_i->instances[0].x == x * 64 && objects->exit_i->instances[0].y == y * 64)
+	{
+		if (objects->coins_left == 0)
+			exit(0);
+		return ;
+	}
 	while (objects->coin_i->instances[i].x > 0)
 	{
-		if (objects->coin_i->instances[i].x == objects->player_i->instances[0].x + 64
-			&& objects->coin_i->instances[i].y == objects->player_i->instances[0].y)
-				objects->coin_i->instances[i].enabled = false;
+		if (objects->coin_i->instances[i].x == x * 64 && objects->coin_i->instances[i].y == y * 64
+			&& objects->coin_i->instances[i].enabled)
+		{
+			objects->coins_left--;
+			objects->coin_i->instances[i].enabled = false;
+		}
 		i++;
 	}
-	objects->player_i->instances[0].x += 64;
+	objects->steps++;
+	set_coordinates(objects, y * 64, x * 64);
+	set_visible(objects, dir);
+	ft_printf("steps:  %d\n", objects->steps);
 }

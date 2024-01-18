@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:07:58 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/17 19:41:06 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:06:51 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 
 	objects = param;
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		ft_go_up(objects);
+		ft_walk(objects, objects->p.y - 1, objects->p.x, 'u');
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		ft_go_left(objects);
+		ft_walk(objects, objects->p.y, objects->p.x - 1, 'l');
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		ft_go_down(objects);
+		ft_walk(objects, objects->p.y + 1, objects->p.x, 'd');
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		ft_go_right(objects);
+		ft_walk(objects, objects->p.y, objects->p.x + 1, 'r');
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		exit(0);
 }
@@ -45,7 +45,9 @@ void	init_game(char **map)
 	if (!objects)
 		return ;
 	size = get_size(map);
+	objects->coins_left = count_char(map, 'C');
 	objects->map = map;
+	objects->steps = 0;
 	objects->mlx = mlx_init(size.x * 64, size.y * 64, "SO_LONG",false);
 	if (!objects->mlx)
 		return ;
