@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:14:36 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 16:33:02 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:20:09 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 void	free_all_int(int32_t **ints, t_point size)
 {
 	int	i;
-	char c;
 
 	i = 0;
 	while (i < size.y)
 	{
-		c = i + '0';
-		write(1, &c, 1);
 		free(ints[i]);
 		i++;
 	}
-	write(1, "ok", 2);
 	free(ints);
 }
 
@@ -88,6 +84,7 @@ void	load_pngs(t_objects *objects)
 
 void	free_pngs(t_objects *objects)
 {
+	write(1, "old\n", 4);
 	mlx_delete_image(objects->mlx, objects->floor_i);
 	mlx_delete_image(objects->mlx, objects->exit_i);
 	mlx_delete_image(objects->mlx, objects->wall_i);

@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:39:17 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 14:08:15 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:16:38 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,6 @@ void	coin_check(t_objects *objects, int y, int x)
 	}
 }
 
-// left: y, x - 1
-// right: y, x + 1
-// up: y - 1, x
-// down: y + 1, x
-// y x are the coordinates in the map!!!
 void	ft_walk(t_objects *objects, int y, int x, char dir)
 {
 	int	i;
