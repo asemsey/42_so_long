@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:52:36 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 18:54:39 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:33:12 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	enemy_check(t_objects *objects, int y, int x)
 {
 	if (objects->map[y][x] == 'B')
 	{
-		write(1, "GAME OVER\n", 10);
+		objects->steps++;
+		ft_printf("steps:  %d\nGAME OVER\n", objects->steps);
 		exit(0);
 	}
 }
@@ -32,7 +33,10 @@ void	ft_walk_b(t_objects *objects, int y, int x, char dir)
 		&& objects->exit_i->instances[0].y == y * 64)
 	{
 		if (objects->coins_left == 0)
+		{
+			ft_printf("steps:  %d\n", objects->steps + 1);
 			exit(0);
+		}
 		return ;
 	}
 	coin_check(objects, y, x);

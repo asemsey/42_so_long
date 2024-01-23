@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:07:58 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 16:32:53 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:31:57 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,12 +114,3 @@ void	init_game(char **map)
 	mlx_loop(objects->mlx);
 	free_pngs(objects);
 }
-
-// void	ft_hook(void *param)
-// {
-// 	const mlx_t	*mlx = param;
-
-// 	(void)mlx;
-// }
-
-// mlx_loop_hook(objects->mlx, ft_hook, objects->mlx);

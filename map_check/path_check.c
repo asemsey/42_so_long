@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:14:35 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/18 13:52:03 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:47:00 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,28 @@ t_point	get_begin(char **map, char start)
 	p.x = 0;
 	p.y = 0;
 	return (p);
+}
+
+int	bad_chars(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'P'
+				&& map[i][j] != 'E' && map[i][j] != 'C')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 int	valid_map(char **map)

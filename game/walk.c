@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:39:17 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 16:16:38 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:32:34 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ void	ft_walk(t_objects *objects, int y, int x, char dir)
 		&& objects->exit_i->instances[0].y == y * 64)
 	{
 		if (objects->coins_left == 0)
+		{
+			ft_printf("steps:  %d\n", objects->steps + 1);
 			exit(0);
+		}
 		return ;
 	}
 	coin_check(objects, y, x);

@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:35:06 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 17:41:37 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:51:54 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		valid_path(char **map);
 int		count_lines(const char *filename);
 void	remove_n(char **map);
 int		count_char(char **map, char c);
+int		bad_chars(char **map);
 int		characters(char **map);
 int		rectangle(char **map);
 int		wall(char **map);

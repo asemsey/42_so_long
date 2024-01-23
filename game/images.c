@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:14:36 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:20:09 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:54:13 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	load_pngs(t_objects *objects)
 
 void	free_pngs(t_objects *objects)
 {
-	write(1, "old\n", 4);
 	mlx_delete_image(objects->mlx, objects->floor_i);
 	mlx_delete_image(objects->mlx, objects->exit_i);
 	mlx_delete_image(objects->mlx, objects->wall_i);

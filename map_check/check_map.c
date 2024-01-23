@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:28:38 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 14:36:30 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:47:16 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	characters(char **map)
 {
 	if (count_char(map, 'P') != 1
 		|| count_char(map, 'E') != 1
-		|| count_char(map, 'C') < 1)
+		|| count_char(map, 'C') < 1
+		|| bad_chars(map))
 	{
 		write(2, "Error\nincorrect characters in map\n", 34);
 		return (0);

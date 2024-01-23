@@ -6,11 +6,33 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:35:03 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 14:51:42 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:49:28 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int	bad_chars_b(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'P'
+				&& map[i][j] != 'E' && map[i][j] != 'C' && map[i][j] != 'B')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 char	**floodfill_b(char **map, int y, int x, char dir)
 {
@@ -51,11 +73,24 @@ int	valid_path_b(char **map)
 	return (0);
 }
 
+int	characters_b(char **map)
+{
+	if (count_char(map, 'P') != 1
+		|| count_char(map, 'E') != 1
+		|| count_char(map, 'C') < 1
+		|| bad_chars_b(map))
+	{
+		write(2, "Error\nincorrect characters in map\n", 34);
+		return (0);
+	}
+	return (1);
+}
+
 int	valid_map_b(char **map)
 {
 	if (!map || !*map)
 		return (0);
-	if (!rectangle(map) || !characters(map) || !wall(map))
+	if (!rectangle(map) || !characters_b(map) || !wall(map))
 		return (0);
 	if (!valid_path_b(map))
 		return (0);
