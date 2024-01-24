@@ -37,8 +37,9 @@ bonus: lib $(BONUS) $(SRCS)
 clean:
 	make clean -sC $(GNL_PATH)
 	make clean -sC $(LIBFT_PATH)
+	rm -rf MLX42
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
 	make fclean -sC $(GNL_PATH)
 	make fclean -sC $(LIBFT_PATH)
