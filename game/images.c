@@ -6,12 +6,13 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:14:36 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:54:13 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:57:32 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+// free an int array
 void	free_all_int(int32_t **ints, t_point size)
 {
 	int	i;
@@ -106,6 +107,7 @@ void	free_pngs(t_objects *objects)
 	free(objects);
 }
 
+// displays all player sprites
 void	player_to_window(t_objects *objects, t_point p)
 {
 	mlx_image_to_window(objects->mlx, objects->dplayer_i, p.x * 64, p.y * 64);

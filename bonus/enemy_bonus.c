@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 17:08:45 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:06:39 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:01:37 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	set_enemy(t_objects *objects, int i, int loop)
 	}
 }
 
+// enemy animation
 void	ft_loop_hook(void *param)
 {
 	t_objects	*objects;

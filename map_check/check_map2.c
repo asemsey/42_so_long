@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_check.c                                       :+:      :+:    :+:   */
+/*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:14:35 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:47:00 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:21:23 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+// returns an allocated copy of the given map
 char	**copy_map(char **map)
 {
 	t_point	size;
@@ -47,6 +48,7 @@ t_point	get_size(char **map)
 	return (p);
 }
 
+// returns the coordinates of start
 t_point	get_begin(char **map, char start)
 {
 	t_point	p;
@@ -68,6 +70,7 @@ t_point	get_begin(char **map, char start)
 	return (p);
 }
 
+// check for forbidden characters
 int	bad_chars(char **map)
 {
 	int	i;

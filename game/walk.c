@@ -6,12 +6,13 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:39:17 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:32:34 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:00:00 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+// change the player sprite
 void	set_visible(t_objects *objects, char dir)
 {
 	if (dir != 'd')
@@ -32,6 +33,7 @@ void	set_visible(t_objects *objects, char dir)
 		objects->rplayer_i->instances[0].enabled = true;
 }
 
+// objects->p is the player position
 void	set_p(t_objects *objects)
 {
 	objects->p.y = objects->dplayer_i->instances[0].y / 64;
@@ -63,6 +65,7 @@ void	coin_check(t_objects *objects, int y, int x)
 	}
 }
 
+// check for coin or exit then step in given direction
 void	ft_walk(t_objects *objects, int y, int x, char dir)
 {
 	int	i;

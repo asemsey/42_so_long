@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:52:36 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:33:12 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:02:10 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	enemy_check(t_objects *objects, int y, int x)
 	}
 }
 
+// check for coin, exit or enemy then step in given direction
 void	ft_walk_b(t_objects *objects, int y, int x, char dir)
 {
 	int	i;

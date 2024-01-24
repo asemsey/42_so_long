@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 15:00:01 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:21:59 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:01:16 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	key_hook_b(mlx_key_data_t keydata, void *param)
 		exit(0);
 }
 
+// prepare game and open the window
 void	init_game_b(char **map)
 {
 	t_point			size;

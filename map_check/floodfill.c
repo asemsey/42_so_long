@@ -6,13 +6,12 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:13:03 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 16:34:06 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:22:00 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-// bonus different
 char	**floodfill(char **map, int y, int x, char dir)
 {
 	if (y < 0 || x < 0 || !map[y] || !map[y][x]
@@ -30,6 +29,7 @@ char	**floodfill(char **map, int y, int x, char dir)
 	return (map);
 }
 
+// check if exit can be reached and coins can be collected
 int	valid_path(char **map)
 {
 	char	**copy;

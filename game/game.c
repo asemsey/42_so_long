@@ -6,12 +6,13 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:07:58 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:31:57 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:48:48 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+// coinmap stores the index of a coin object at the correct coordinates
 void	get_coinmap(t_objects *objects)
 {
 	t_point	size;
@@ -54,6 +55,7 @@ void	object_to_window(t_objects *objects, int y, int x)
 		mlx_image_to_window(objects->mlx, objects->exit_i, x * 64, y * 64);
 }
 
+// displays all images according to the map
 void	load_map(t_objects *objects)
 {
 	t_point	p;
@@ -76,6 +78,7 @@ void	load_map(t_objects *objects)
 	player_to_window(objects, player);
 }
 
+// walk with WASD, exit with ESC
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_objects	*objects;
@@ -93,6 +96,7 @@ void	key_hook(mlx_key_data_t keydata, void *param)
 		exit(0);
 }
 
+// prepare game and open the window
 void	init_game(char **map)
 {
 	t_point			size;

@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:35:06 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:51:54 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:02:14 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
+// all textures, images and variables
 typedef struct s_objects
 {
 	char			**map;
@@ -64,44 +65,52 @@ typedef struct s_objects
 	mlx_image_t		*enemy4_i;
 }	t_objects;
 
-// map
+// map:
+
 char	**read_map(const char *filename);
-void	print_map(char **map);
-int		valid_map(char **map);
-int		valid_path(char **map);
+char	**copy_map(char **map);
 int		count_lines(const char *filename);
 void	remove_n(char **map);
-int		count_char(char **map, char c);
-int		bad_chars(char **map);
-int		characters(char **map);
-int		rectangle(char **map);
+void	print_map(char **map);
+
 int		wall(char **map);
+int		rectangle(char **map);
+int		characters(char **map);
+int		bad_chars(char **map);
+int		count_char(char **map, char c);
+
+int		valid_map(char **map);
+int		valid_path(char **map);
 t_point	get_size(char **map);
 t_point	get_begin(char **map, char start);
-char	**copy_map(char **map);
 
-// game
+
+// game:
+
 void	init_game(char **map);
+void	get_coinmap(t_objects *objects);
 void	load_pngs(t_objects *objects);
 void	to_image(t_objects *objects);
+void	load_map(t_objects *objects);
+void	player_to_window(t_objects *objects, t_point p);
 void	free_pngs(t_objects *objects);
 void	free_all_int(int32_t **ints, t_point size);
-void	load_map(t_objects *objects);
-void	get_coinmap(t_objects *objects);
+
+void	ft_walk(t_objects *objects, int y, int x, char dir);
 void	coin_check(t_objects *objects, int y, int x);
-void	player_to_window(t_objects *objects, t_point p);
 void	set_coordinates(t_objects *objects, int y, int x);
 void	set_p(t_objects *objects);
 void	set_visible(t_objects *objects, char dir);
-void	ft_walk(t_objects *objects, int y, int x, char dir);
 
-// bonus
+
+// bonus:
+
 int		valid_path_b(char **map);
 int		valid_map_b(char **map);
 void	init_game_b(char **map);
-void	ft_loop_hook(void *param);
-void	ft_walk_b(t_objects *objects, int y, int x, char dir);
 void	load_pngs_b(t_objects *objects);
 void	free_pngs_b(t_objects *objects);
+void	ft_loop_hook(void *param);
+void	ft_walk_b(t_objects *objects, int y, int x, char dir);
 
 #endif

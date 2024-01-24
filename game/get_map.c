@@ -6,12 +6,13 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:23:41 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 16:24:14 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:44:17 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+// count lines in the given file
 int	count_lines(const char *filename)
 {
 	int		i;
@@ -35,6 +36,7 @@ int	count_lines(const char *filename)
 	return (i);
 }
 
+// return lines stored in file as array
 char	**read_map(const char *filename)
 {
 	int		lines;
@@ -76,6 +78,7 @@ void	print_map(char **map)
 	}
 }
 
+// remove \n from all lines
 void	remove_n(char **map)
 {
 	int		i;

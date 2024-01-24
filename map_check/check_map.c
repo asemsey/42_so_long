@@ -6,12 +6,13 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:28:38 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:47:16 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 10:19:11 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+// check if all lines are the same length
 int	rectangle(char **map)
 {
 	int	i;
@@ -29,6 +30,7 @@ int	rectangle(char **map)
 	return (1);
 }
 
+// count the given character in the map
 int	count_char(char **map, char c)
 {
 	int	i;
@@ -52,6 +54,7 @@ int	count_char(char **map, char c)
 	return (result);
 }
 
+// check correct character count in the map
 int	characters(char **map)
 {
 	if (count_char(map, 'P') != 1
@@ -65,6 +68,7 @@ int	characters(char **map)
 	return (1);
 }
 
+// string only contains the char c
 int	only_c(char *str, char c)
 {
 	while (str && *str)
@@ -76,6 +80,7 @@ int	only_c(char *str, char c)
 	return (1);
 }
 
+// check if all the edges are '1'
 int	wall(char **map)
 {
 	int	i;

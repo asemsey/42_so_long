@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:35:03 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 19:49:28 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:00:47 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	**floodfill_b(char **map, int y, int x, char dir)
 	return (map);
 }
 
+// check if exit can be reached and coins can be collected
 int	valid_path_b(char **map)
 {
 	char	**copy;
