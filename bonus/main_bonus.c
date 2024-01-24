@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_bonus.c                                      :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:18:47 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/23 16:22:23 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:28:40 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	leak(void)
-{
-	system("leaks so_long");
-}
-
 int	main(int argc, char const *argv[])
 {
 	char	**map;
 
-	atexit(leak);
 	if (argc != 2)
 		return (EXIT_FAILURE);
+	if (!check_filename(argv[1]))
+	{
+		write(1, "Error\nincorrect filename\n", 25);
+		return (EXIT_FAILURE);
+	}
 	map = read_map(argv[1]);
 	if (!map)
 	{

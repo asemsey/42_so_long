@@ -6,11 +6,33 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:23:41 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/24 10:44:17 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:30:40 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+// file must be .ber file
+int	check_filename(const char *filename)
+{
+	while (filename && *filename && *filename != '.')
+		filename++;
+	if (!filename || !*filename)
+		return (0);
+	filename++;
+	if (!*filename || *filename != 'b')
+		return (0);
+	filename++;
+	if (!*filename || *filename != 'e')
+		return (0);
+	filename++;
+	if (!*filename || *filename != 'r')
+		return (0);
+	filename++;
+	if (*filename)
+		return (0);
+	return (1);
+}
 
 // count lines in the given file
 int	count_lines(const char *filename)

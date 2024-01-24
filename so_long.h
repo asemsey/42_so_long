@@ -6,7 +6,7 @@
 /*   By: asemsey <asemsey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:35:06 by asemsey           #+#    #+#             */
-/*   Updated: 2024/01/24 11:02:14 by asemsey          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:32:42 by asemsey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_objects
 
 // map:
 
+int		check_filename(const char *filename);
 char	**read_map(const char *filename);
 char	**copy_map(char **map);
 int		count_lines(const char *filename);
@@ -84,7 +85,6 @@ int		valid_path(char **map);
 t_point	get_size(char **map);
 t_point	get_begin(char **map, char start);
 
-
 // game:
 
 void	init_game(char **map);
@@ -101,7 +101,6 @@ void	coin_check(t_objects *objects, int y, int x);
 void	set_coordinates(t_objects *objects, int y, int x);
 void	set_p(t_objects *objects);
 void	set_visible(t_objects *objects, char dir);
-
 
 // bonus:
 
