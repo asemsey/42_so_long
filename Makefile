@@ -18,6 +18,8 @@ GNL = $(GNL_PATH)/get_next_line.a
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
+# -----------------------------------------------------------------------------
+
 all: $(NAME)
 
 $(NAME): lib $(SRCS) $(MAIN)
@@ -45,3 +47,5 @@ fclean: clean
 	make fclean -sC $(LIBFT_PATH)
 
 re: fclean all
+
+.PHONY: all lib bonus clean fclean re
