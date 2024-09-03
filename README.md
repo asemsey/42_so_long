@@ -8,6 +8,8 @@ This project provides valuable experience in the following areas:
 - **Event Handling**: managing user input and rendering game state changes in real-time.
 - **File Parsing**:  parsing and interpreting custom file formats to generate dynamic game environments.
 - **Graphics Programming**: hands-on experience with the MiniLibX library, rendering sprites and managing window events.
+  
+![ScreenRecording2024-09-03at5 00 10PM-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/f4398eba-5fc5-48c1-ae2f-cb33ee526122)
 
 ## Usage
 
